@@ -30,7 +30,8 @@
     "on-finished": "^2.2.0",
     "on-tasks": "git+https://github.com/RackHD/on-tasks.git",
     "pluralize": "~1.1.2",
-    "ws": "^0.8.0"
+    "ws": "^0.8.0",
+    "swagger-express-mw": "git+https://github.com/brianparry/swagger-express.git"
   },
   "devDependencies": {
     "apidoc": "^0.12.1",

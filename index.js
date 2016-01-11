@@ -40,14 +40,19 @@ function onHttpContextFactory(di, directory) {
         },
 
         injectables: _.flattenDeep([
-            helper.requireGlob(__dirname + '/lib/**/*.js'),
+            //this line should be added once /lib/api/2.0/ files support di
+            //helper.requireGlob(__dirname + '/lib/**/*.js'),
+            helper.requireGlob(__dirname + '/lib/api/1.1/*.js'),
+            helper.requireGlob(__dirname + '/lib/services/**/*.js'),
+            helper.requireGlob(__dirname + '/lib/serializables/**/*.js'),
             require('./app')
         ]),
 
         prerequisiteInjectables: _.flattenDeep([
             onTasks.injectables,
             helper.simpleWrapper(ws, 'ws'),
-            helper.simpleWrapper(ws.Server, 'WebSocketServer')
+            helper.simpleWrapper(ws.Server, 'WebSocketServer'),
+            helper.requireWrapper('swagger-express-mw', 'swagger')
         ])
     };
 }
