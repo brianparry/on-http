@@ -18,6 +18,7 @@ describe('Services.WebSocket', function () {
             onHttpContext.helper.simpleWrapper({}, 'ipmi-obm-service'),
             onHttpContext.helper.requireWrapper('rimraf', 'rimraf'),
             onHttpContext.helper.requireWrapper('os-tmpdir', 'osTmpdir'),
+            onHttpContext.helper.requireWrapper('passport', 'passport'),
             helper.requireGlob('/lib/api/1.1/*.js'),
             helper.requireGlob('/lib/services/**/*.js'),
             helper.requireGlob('/lib/serializables/**/*.js')

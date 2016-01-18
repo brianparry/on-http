@@ -55,7 +55,8 @@ function onHttpContextFactory(di, directory) {
             onTasks.injectables,
             helper.simpleWrapper(ws, 'ws'),
             helper.simpleWrapper(ws.Server, 'WebSocketServer'),
-            helper.requireWrapper('swagger-express-mw', 'swagger')
+            helper.requireWrapper('swagger-express-mw', 'swagger'),
+            helper.requireWrapper('passport', 'passport')
         ])
     };
 }

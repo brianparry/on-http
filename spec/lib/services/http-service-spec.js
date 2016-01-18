@@ -18,6 +18,7 @@ describe('Http.Server', function () {
             dihelper.simpleWrapper({}, 'ipmi-obm-service'),
             dihelper.requireWrapper('rimraf', 'rimraf'),
             dihelper.requireWrapper('os-tmpdir', 'osTmpdir'),
+            dihelper.requireWrapper('passport', 'passport'),
             helper.require('/lib/services/http-service'),
             helper.requireGlob('/lib/api/1.1/*.js'),
             helper.requireGlob('/lib/services/**/*.js'),
