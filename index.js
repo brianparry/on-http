@@ -44,6 +44,7 @@ function onHttpContextFactory(di, directory) {
 
         injectables: _.flattenDeep([
             helper.requireGlob(__dirname + '/lib/api/1.1/*.js'),
+            helper.requireGlob(__dirname + '/lib/api/auth/*.js'),
             helper.requireGlob(__dirname + '/lib/services/**/*.js'),
             helper.requireGlob(__dirname + '/lib/serializables/**/*.js'),
             require('./app'),
