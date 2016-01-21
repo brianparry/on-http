@@ -49,7 +49,8 @@ function onHttpContextFactory(di, directory) {
             helper.requireGlob(__dirname + '/lib/serializables/**/*.js'),
             require('./app'),
             helper.requireWrapper('rimraf', 'rimraf'),
-            helper.requireWrapper('os-tmpdir', 'osTmpdir')
+            helper.requireWrapper('os-tmpdir', 'osTmpdir'),
+            helper.requireWrapper('passport', 'passport')
         ]),
 
         prerequisiteInjectables: _.flattenDeep([
