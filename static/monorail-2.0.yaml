@@ -17,6 +17,11 @@ consumes:
 # format of the responses to the client (Accepts)
 produces:
   - application/json
+securityDefinitions:
+  bearer:
+    type: apiKey
+    name: Authorization
+    in: header
 paths:
   /versions:
     x-swagger-router-controller: versions
@@ -35,6 +40,8 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+  security:
+    - bearer: []
   /swagger:
     x-swagger-pipe: swagger_raw
   /pollers/library:
