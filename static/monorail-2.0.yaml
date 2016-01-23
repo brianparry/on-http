@@ -65,6 +65,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
   /pollers/library/{identifier}:
     x-swagger-router-controller: unimplemented
     get:
@@ -98,6 +100,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
   /pollers:
     x-swagger-router-controller: unimplemented
     get:
@@ -119,6 +123,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
     post:
       operationId: getVersions
       summary: |
@@ -138,6 +144,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
   /pollers/{identifier}:
     x-swagger-router-controller: unimplemented
     get:
@@ -171,6 +179,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
     patch:
       operationId: unimplemented
       summary: |
@@ -202,6 +212,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
     delete:
       operationId: unimplemented
       summary: |
@@ -231,6 +243,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
   /pollers/{identifier}/data:
     x-swagger-router-controller: unimplemented
     get:
@@ -264,6 +278,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
   /templates/library:
     x-swagger-router-controller: unimplemented
     get:
@@ -285,6 +301,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
   /templates/library/{identifier}:
     x-swagger-router-controller: unimplemented
     get:
@@ -318,6 +336,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
     put:
       operationId: unimplemented
       summary: |
@@ -350,6 +370,8 @@ paths:
           schema:
             $ref: '#/definitions/Error'
 
+      security:
+        - bearer: []
   /skus:
     x-swagger-router-controller: unimplemented
     get:
@@ -371,6 +393,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
     post:
       operationId: unimplemented
       summary: |
@@ -395,6 +419,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
   /skus/{identifier}:
     x-swagger-router-controller: unimplemented
     get:
@@ -428,6 +454,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
     patch:
       operationId: unimplemented
       summary: |
@@ -464,6 +492,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
     delete:
       operationId: unimplemented
       summary: |
@@ -495,6 +525,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
   /skus/{identifier}/nodes:
     x-swagger-router-controller: unimplemented
     get:
@@ -529,6 +561,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
 
   /profiles/library:
     x-swagger-router-controller: unimplemented
@@ -551,6 +585,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
   /profiles/library/{identifier}:
     x-swagger-router-controller: unimplemented
     get:
@@ -584,6 +620,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
     put:
       operationId: unimplemented
       summary: |
@@ -615,6 +653,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
 
   /obms/library:
     x-swagger-router-controller: unimplemented
@@ -637,6 +677,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
   /obms/library/{identifier}:
     x-swagger-router-controller: unimplemented
     get:
@@ -670,6 +712,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
 
 
   /workflows/library:
@@ -693,6 +737,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
 
   /workflows/tasks:
     x-swagger-router-controller: unimplemented
@@ -716,6 +762,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
     put:
       operationId: unimplemented
       summary: |
@@ -741,6 +789,8 @@ paths:
           description: Upload failed
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
   /workflows:
     x-swagger-router-controller: unimplemented
     get:
@@ -762,6 +812,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
     put:
       operationId: unimplemented
       summary: |
@@ -786,6 +838,8 @@ paths:
           description: Upload failed
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
 
   /nodes/{identifier}/workflows/active:
     x-swagger-router-controller: unimplemented
@@ -822,6 +876,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
     delete:
       operationId: unimplemented
       summary: |
@@ -855,6 +911,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
   /nodes/{identifier}/workflows:
     x-swagger-router-controller: unimplemented
     get:
@@ -890,6 +948,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
     post:
       operationId: unimplemented
       summary: |
@@ -923,6 +983,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
   /nodes/{macaddress}/dhcp/whitelist:
     x-swagger-router-controller: unimplemented
     post:
@@ -959,6 +1021,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
     delete:
       operationId: unimplemented
       summary: |
@@ -991,6 +1055,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
 
   /nodes/{identifier}/pollers:
     x-swagger-router-controller: unimplemented
@@ -1027,6 +1093,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
 
   /nodes/{identifier}/catalogs/{source}:
     x-swagger-router-controller: unimplemented
@@ -1070,6 +1138,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
 
   /nodes/{identifier}/catalogs:
     x-swagger-router-controller: unimplemented
@@ -1106,6 +1176,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
 
   /nodes/{identifier}/obm/identify:
     x-swagger-router-controller: unimplemented
@@ -1142,6 +1214,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
     post:
       operationId: unimplemented
       summary: |
@@ -1180,6 +1254,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
   /nodes/{identifier}/obm:
     x-swagger-router-controller: unimplemented
     get:
@@ -1214,6 +1290,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
     post:
       operationId: unimplemented
       summary: |
@@ -1251,6 +1329,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
   /nodes/{identifier}:
     x-swagger-router-controller: unimplemented
     get:
@@ -1285,6 +1365,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
     delete:
       operationId: unimplemented
       summary: |
@@ -1313,6 +1395,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
     patch:
       operationId: unimplemented
       summary: |
@@ -1350,6 +1434,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
   /nodes:
     x-swagger-router-controller: unimplemented
     get:
@@ -1376,6 +1462,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
     post:
       operationId: unimplemented
       summary: |
@@ -1403,6 +1491,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
   /lookups:
     x-swagger-router-controller: unimplemented
     get:
@@ -1425,6 +1515,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
     post:
       operationId: unimplemented
       summary: |
@@ -1450,6 +1542,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
   /lookups/{id}:
     x-swagger-router-controller: unimplemented
     get:
@@ -1478,6 +1572,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
     post:
       operationId: unimplemented
       summary: |
@@ -1508,6 +1604,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
   /files/{fileidentifier}:
     x-swagger-router-controller: unimplemented
     get:
@@ -1545,6 +1643,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
     put:
       operationId: unimplemented
       summary: |
@@ -1586,6 +1686,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
     delete:
       operationId: unimplemented
       summary: |
@@ -1616,6 +1718,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
   /config:
     x-swagger-router-controller: unimplemented
     get:
@@ -1636,6 +1740,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
     patch:
       operationId: unimplemented
       summary: |
@@ -1654,6 +1760,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
   /catalogs:
     x-swagger-router-controller: unimplemented
     get:
@@ -1683,6 +1791,8 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      security:
+        - bearer: []
   /catalogs/{identifier}:
     x-swagger-router-controller: unimplemented
     get:
@@ -1710,6 +1820,8 @@ paths:
               $ref: '#/definitions/catalog'
         default:
           description: NotFound error
+      security:
+        - bearer: []
   /dhcp:
     x-swagger-router-controller: unimplemented
     get:
@@ -1731,6 +1843,8 @@ paths:
               $ref: '#/definitions/lease'
         default:
           description: NotFound error
+      security:
+        - bearer: []
   /dhcp/lease/{mac}:
     x-swagger-router-controller: unimplemented
     get:
@@ -1757,6 +1871,8 @@ paths:
               $ref: '#/definitions/lease'
         default:
           description: NotFound error
+      security:
+        - bearer: []
     delete:
       operationId: unimplemented
       summary: get list of all catalogs
@@ -1780,6 +1896,8 @@ paths:
               $ref: '#/definitions/lease'
         default:
           description: NotFound error
+      security:
+        - bearer: []
 
 definitions:
   ErrorResponse:
