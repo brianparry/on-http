@@ -40,8 +40,8 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-  security:
-    - bearer: []
+    security:
+      - bearer: []
   /swagger:
     x-swagger-pipe: swagger_raw
   /pollers/library:
