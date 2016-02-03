@@ -35,6 +35,11 @@ swagger:
       name: swagger_render
       templateNameKey: x-swagger-template
 
+    _middleware_fitting:
+      type: connect-middleware
+      module: lib/services/swagger/shims/middleware
+      function: middleware
+
     # pipe for all swagger-node controllers
     swagger_controllers:
       - onError: json_error_handler
@@ -43,9 +48,11 @@ swagger:
       - swagger_security
       - _swagger_validate
       - express_compatibility
+      - _middleware_fitting 
       - _swagger_deserializer
       - _router
       - _swagger_serializer
+      _ _middleware_fitting
       - _swagger_renderer
 
     # pipe to serve swagger (endpoint is in swagger.yaml)
