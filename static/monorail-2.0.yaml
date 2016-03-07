@@ -802,11 +802,16 @@ paths:
   /workflows:
     x-swagger-router-controller: workflows
     get:
-      operationId: workflowsGetAll
+      operationId: workflowsGet
       summary: |
         Get list of active and past run workflow instances
       description: |
         Get list of active and past run workflow instances
+      parameters:
+        - name: active 
+          in: query
+          required: false
+          type: boolean
       tags: [ "/api/2.0" ]
       responses:
         200:
