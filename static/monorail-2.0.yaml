@@ -698,6 +698,13 @@ paths:
         Add tasks to task library
       description: |
         Add tasks to task library
+      parameters:
+        - name: body
+          in: body
+          description: Workflow name
+          required: false
+          schema:
+            $ref: '#/definitions/generic_obj'
       tags: [ "/api/2.0" ]
       responses:
         200:
