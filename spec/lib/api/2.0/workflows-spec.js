@@ -143,7 +143,6 @@ describe('Http.Api.Workflows.2.0', function () {
                 expect(workflowApiService.cancelTaskGraph)
                      .to.have.been.calledWith(graph.instanceId);
         });
-
     });
 
 
