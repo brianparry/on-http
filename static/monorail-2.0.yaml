@@ -891,6 +891,13 @@ paths:
       description: |
         Get list of active and past run workflow instances
       tags: [ "/api/2.0" ]
+      parameters:
+        - name: active 
+          in: query
+          description: |
+            Filter active workflows
+          required: false
+          type: boolean
       responses:
         200:
           description: |
