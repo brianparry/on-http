@@ -133,15 +133,22 @@ describe('Http.Api.Workflows.2.0', function () {
 
     describe('workflowsCancel', function () {
         it('should cancel a task', function () {
-            var graph = { id: 'foobar' ,
-                          state: 'running'
+            var graph = { instancId: 'foobar',
+                          _status: 'cancelled'
                         };
 
-            workflowApiService.cancelTaskGraph.resolves(graph.id);
-            return helper.request().put('/api/2.0/nodes/123/workflows/cancel')
-                expect(workflowApiService.cancelTaskGraph).to.have.been.calledOnce;
-                expect(workflowApiService.cancelTaskGraph)
-                     .to.have.been.calledWith(graph.instanceId);
+            workflowApiService.cancelTaskGraph.resolves(graph);
+            return helper.request().put('/api/2.0/workflows/56e6ef601c3a31638be765fc/cancel')
+                .set('Content-Type', 'application/json')
+                .expect(200)
+                .expect(function() {
+                    expect(workflowApiService.cancelTaskGraph).to.have.been.calledOnce;
+                    expect(workflowApiService.cancelTaskGraph)
+                         .to.have.been.calledWith('56e6ef601c3a31638be765fc');
+                })
+                .expect(function(res) {
+                    expect(res.body).to.deep.equal(graph);
+                });
         });
     });
 
@@ -157,10 +164,12 @@ describe('Http.Api.Workflows.2.0', function () {
 
         it('should delete the Task with DELETE /workflows/id', function () {
             return helper.request().delete('/api/2.0/workflows/'+ workflow.id)
-                .expect(200);
-                expect(workflowApiService.deleteTaskGraph).to.have.been.calledOnce;
-                expect(workflowApiService.deleteTaskGraph)
-                     .to.have.been.calledWith(workflow.id);
+                .expect(200)
+                .expect(function() {
+                    expect(workflowApiService.deleteTaskGraph).to.have.been.calledOnce;
+                    expect(workflowApiService.deleteTaskGraph)
+                         .to.have.been.calledWith(workflow.id);
+                });
         });
 
     });
