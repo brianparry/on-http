@@ -4,57 +4,32 @@
 'use strict';
 
 describe('Http.Api.Workflows.2.0', function () {
-    var waterline;
     var workflowApiService;
 
     before('start HTTP server', function () {
         var self = this;
         this.timeout(5000);
-
-        waterline = {
-            start: sinon.stub(),
-            stop: sinon.stub(),
-            lookups: {
-                setIndexes: sinon.stub()
-            }
+        workflowApiService = {
+            getGraphDefinitions: sinon.stub(),
+            workflowsGetGraphsByName: sinon.stub(),
+            defineTaskGraph: sinon.stub(),
+            destroyGraphDefinition: sinon.stub()
         };
-        this.sandbox = sinon.sandbox.create();
 
         return helper.startServer([
-            dihelper.simpleWrapper(waterline, 'Services.Waterline'),
+            dihelper.simpleWrapper(workflowApiService, 'Http.Services.Api.Workflows'),
         ])
-        .then(function() {
-            workflowApiService = helper.injector.get('Http.Services.Api.Workflows');
-            self.sandbox.stub(workflowApiService, 'getGraphDefinitions').resolves();
-            self.sandbox.stub(workflowApiService, 'defineTaskGraph').resolves();
-            self.sandbox.stub(workflowApiService, 'destroyGraphDefinition').resolves();
-        });
     });
 
     after('stop HTTP server', function () {
         return helper.stopServer();
     });
 
-    beforeEach('set up mocks', function () {
-        waterline.nodes = {
-            findByIdentifier: sinon.stub().resolves()
-        };
-        waterline.graphobjects = {
-            find: sinon.stub().resolves([]),
-            findByIdentifier: sinon.stub().resolves(),
-            needByIdentifier: sinon.stub().resolves()
-        };
-        waterline.lookups = {
-            // This method is for lookups only and it
-            // doesn't impact behavior whether it is a
-            // resolve or a reject since it's related
-            // to logging.
-            findOneByTerm: sinon.stub().rejects()
-        };
-    });
-
-    afterEach('clean up mocks', function () {
-        this.sandbox.reset();
+    afterEach('set up mocks', function () {
+        workflowApiService.getGraphDefinitions.reset();
+        workflowApiService.workflowsGetGraphsByName.reset();
+        workflowApiService.defineTaskGraph.reset();
+        workflowApiService.destroyGraphDefinition.reset();
     });
 
     describe('workflowsGetGraphs', function () {
@@ -71,11 +46,16 @@ describe('Http.Api.Workflows.2.0', function () {
     describe('workflowsGetGraphsByName', function () {
         it('should retrieve the graph by Name', function () {
             var graph = { name: 'foobar' };
-            workflowApiService.getGraphDefinitions.resolves([graph]);
+            workflowApiService.getGraphDefinitions.resolves(graph);
 
-            return helper.request().get('/api/2.0/workflows/library')
+            return helper.request().get('/api/2.0/workflows/graphs/' + graph.name)
                 .expect('Content-Type', /^application\/json/)
-                .expect(200, [graph]);
+                .expect(200, graph)
+                .expect(function(res) {
+                    expect(workflowApiService.getGraphDefinitions).to.have.been.calledOnce;
+                    expect(workflowApiService.getGraphDefinitions)
+                        .to.have.been.calledWith('foobar');
+                });
         });
     });
 
@@ -87,18 +67,23 @@ describe('Http.Api.Workflows.2.0', function () {
             return helper.request().put('/api/2.0/workflows/graphs')
             .send(graph)
             .expect('Content-Type', /^application\/json/)
-            .expect(202, graph);
+            .expect(201, graph);
         });
     });
      
    describe('workflowsDeleteGraphsByName', function () {
         it('should delete Graph by name', function () {
-            var graph = { name: 'Destroy Me' };
-            workflowApiService.destroyGraphDefinition(graph[name]);
+            var graph = { name: 'Destroy.Me' };
+            workflowApiService.destroyGraphDefinition.resolves(graph);
 
-            return helper.request().delete('/api/2.0/workflows/graphs')
+            return helper.request().delete('/api/2.0/workflows/graphs/' + graph.name)
             .expect('Content-Type', /^application\/json/)
-            .expect(202, {}); 
+            .expect(200, graph)
+            .expect(function(res) {
+                expect(workflowApiService.destroyGraphDefinition).to.have.been.calledOnce;
+                expect(workflowApiService.destroyGraphDefinition)
+                    .to.have.been.calledWith('Destroy.Me');
+            });
         });
     });
 });
