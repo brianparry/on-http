@@ -681,6 +681,7 @@ paths:
         Get list of tasks possible to run in workflows
       description: |
         Get list of tasks possible to run in workflows
+      tags: [ "/api/2.0" ]
       responses:
         200:
           description: |
@@ -829,6 +830,7 @@ paths:
         Run a new workflow
       description: |
         Run a new workflow
+      tags: [ "/api/2.0" ]
       responses:
         201:
           description: |
@@ -860,9 +862,7 @@ paths:
             Workflow identifier
           required: true
           type: string
-      tags:
-        - workflow
-        - get
+      tags: [ "/api/2.0" ]
       responses:
         200:
           description: |
@@ -918,9 +918,7 @@ paths:
             Workflow identifier
           required: true
           type: string
-      tags:
-        - workflow
-        - get
+      tags: [ "/api/2.0" ]
       responses:
         200:
           description: |
@@ -945,6 +943,7 @@ paths:
         Get list of all graphs
       description: |
         Get list of all graphs
+      tags: [ "/api/2.0" ]
       responses:
         200:
           description: |
