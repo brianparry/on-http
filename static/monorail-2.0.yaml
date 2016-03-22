@@ -674,7 +674,7 @@ paths:
             $ref: '#/definitions/Error'
 
   /workflows/tasks:
-    x-swagger-router-controller: workflows
+    x-swagger-router-controller: workflowTasks
     get:
       operationId: workflowsGetAllTasks
       summary: |
@@ -716,7 +716,7 @@ paths:
             $ref: '#/definitions/Error'
 
   /workflows/tasks/{injectableName}:
-    x-swagger-router-controller: workflows
+    x-swagger-router-controller: workflowTasks
     get:
       operationId: workflowsGetTasksByName
       summary: |
@@ -936,7 +936,7 @@ paths:
             $ref: '#/definitions/Error'
 
   /workflows/graphs:
-    x-swagger-router-controller: workflows
+    x-swagger-router-controller: workflowGraphs
     get:
       operationId: workflowsGetGraphs
       summary: |
@@ -978,7 +978,7 @@ paths:
             $ref: '#/definitions/Error'
 
   /workflows/graphs/{injectableName}:
-    x-swagger-router-controller: workflows
+    x-swagger-router-controller: workflowGraphs
     get:
       operationId: workflowsGetGraphsByName
       summary: |
