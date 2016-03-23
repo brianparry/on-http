@@ -825,6 +825,13 @@ paths:
         Add a graph to the graph library
       description: |
         Add a graph to the graph library
+      parameters:
+        - name: body
+          in: body
+          description: Workflow name
+          required: false
+          schema:
+            $ref: '#/definitions/generic_obj'
       tags: [ "/api/2.0" ]
       responses:
         200:
@@ -934,11 +941,6 @@ paths:
         Get list of active and past run workflow instances
       description: |
         Get list of active and past run workflow instances
-      parameters:
-        - name: active 
-          in: query
-          required: false
-          type: boolean
       tags: [ "/api/2.0" ]
       responses:
         200:
@@ -956,6 +958,13 @@ paths:
         Run a new workflow
       description: |
         Run a new workflow
+      parameters:
+        - name: body
+          in: body
+          description: Workflow name
+          required: false
+          schema:
+            $ref: '#/definitions/generic_obj'
       tags: [ "/api/2.0" ]
       responses:
         201:
