@@ -176,36 +176,4 @@ describe('Http.Api.workflowTasks.2.0', function () {
                 .expect(202);
         });
     });
-
-    describe('workflowsPutTaskByName ', function () {
-        it('should persist a task', function () {
-            var task = {
-                friendlyName: 'dummy',
-                injectableName: 'dummyName',
-                options: {
-                    oids: 'SNMPv2-MIB::sysDescr'
-                }
-            };
-            var newTask = {
-                friendlyName: 'test',
-                injectableName: 'dummyName',
-                options: {
-                    oids: 'test'
-                }
-            };
-
-
-            workflowApiService.getWorkflowsTasksByName.resolves(task);
-            workflowApiService.putWorkflowsTasksByName.resolves(newTask);
-
-            return helper.request().put('/api/2.0/workflows/tasks/'+task.injectableName)
-                .send(newTask)
-                .expect('Content-Type', /^application\/json/)
-                .expect(202, newTask);
-        });
-
-    });
-
-
-
 });
