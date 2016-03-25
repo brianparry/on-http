@@ -26,7 +26,6 @@ describe('Http.Api.Workflows.2.0', function () {
         .then(function() {
             workflowApiService = helper.injector.get('Http.Services.Api.Workflows');
             self.sandbox.stub(workflowApiService, 'getGraphDefinitions').resolves();
-            self.sandbox.stub(workflowApiService, 'getGraphDefinitions').resolves();
             self.sandbox.stub(workflowApiService, 'defineTaskGraph').resolves();
             self.sandbox.stub(workflowApiService, 'destroyGraphDefinition').resolves();
         });
@@ -62,7 +61,7 @@ describe('Http.Api.Workflows.2.0', function () {
     describe('workflowsGetGraphs', function () {
         it('should retrieve the workflow Graphs', function () {
             var task = { name: 'foobar' };
-            workflowApiService.getGraphDefinition.resolves([task]);
+            workflowApiService.getGraphDefinitions.resolves([task]);
 
             return helper.request().get('/api/2.0/workflows/graphs')
                 .expect('Content-Type', /^application\/json/)
