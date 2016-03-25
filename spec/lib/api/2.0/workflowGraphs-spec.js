@@ -58,7 +58,6 @@ describe('Http.Api.Workflows.2.0', function () {
         this.sandbox.reset();
     });
 
-
     describe('workflowsGetGraphs', function () {
         it('should retrieve the workflow Graphs', function () {
             var task = { name: 'foobar' };
@@ -91,7 +90,6 @@ describe('Http.Api.Workflows.2.0', function () {
             .expect('Content-Type', /^application\/json/)
             .expect(202, graph);
         });
-
     });
      
    describe('workflowsDeleteGraphsByName', function () {
@@ -104,6 +102,5 @@ describe('Http.Api.Workflows.2.0', function () {
             .expect(202, {}); 
         });
     });
-
 });
 
