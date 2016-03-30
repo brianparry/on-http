@@ -1844,6 +1844,7 @@ paths:
     x-swagger-router-controller: nodes
     get:
       x-swagger-serializer: nodes
+      x-view: node-test.json
       operationId: nodesGetAll
       x-privileges: [ 'Read' ]
       x-authentication-type: [ 'jwt' ]
