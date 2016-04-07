@@ -756,6 +756,7 @@ paths:
     x-swagger-router-controller: obms
     get:
       x-swagger-serializer: obms
+      x-view: Obms.2.0.json
       operationId: getObmLib
       x-privileges: [ 'Read' ]
       x-authentication-type: [ 'jwt' ]
