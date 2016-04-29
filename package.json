@@ -31,7 +31,7 @@
     "moment": "~2.11.1",
     "mongodb": "^1.4.28",
     "multer": "~1.1.0",
-    "on-core": "git+https://github.com/RackHD/on-core.git",
+    "on-core": "git+https://github.com/brianparry/on-core#feature/poller-refactor",
     "on-finished": "^2.2.0",
     "on-tasks": "git+https://github.com/RackHD/on-tasks.git",
     "os-tmpdir": "~1.0.1",
