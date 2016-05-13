@@ -365,6 +365,13 @@ paths:
             template name
           required: true
           type: string
+        - name: scope
+          in: query
+          description: | 
+            template scope
+          required: false
+          type: string
+          default: 'global'
       tags: [ "/api/2.0" ]
       responses:
         200:
