@@ -417,7 +417,7 @@ paths:
           type: string
           default: 'global'
       consumes:
-        - application/octet-stream
+        - text/plain
         - application/x-www-form-urlencoded
       tags: [ "/api/2.0" ]
       responses:
@@ -426,6 +426,42 @@ paths:
             return template
           schema:
             type: object
+        404:
+          description: |
+            There is no template with specified identifier.
+          schema:
+            $ref: '#/definitions/Error'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    delete:
+      operationId: templatesLibDelete
+      x-privileges: [ 'Write' ]
+      x-authentication-type: [ 'jwt' ]
+      summary: |
+        delete a single template
+      description: |
+        delete a single template
+      parameters:
+        - name: name
+          in: path
+          description: |
+            objectid of template
+          required: true
+          type: string
+        - name: scope
+          in: query
+          description: | 
+            template scope
+          required: false
+          type: string
+          default: 'global'
+      tags: [ "/api/2.0" ]
+      responses:
+        204:
+          description: |
+            delete template
         404:
           description: |
             There is no template with specified identifier.
