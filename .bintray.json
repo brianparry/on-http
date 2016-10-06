@@ -1,8 +1,8 @@
 {
     "package": {
-        "name": "packages",
-        "repo": "debian",
-        "subject": "rackhd"
+        "name": "apidoc",
+        "repo": "test",
+        "subject": "stryker"
     },
 
     "version": {
@@ -12,14 +12,7 @@
     "files":
     [
         {
-            "includePattern": "deb/(.*)", "uploadPattern": "dists/trusty/main/binary-amd64/$1",
-            "matrixParams":
-            {
-                "override": 1,
-                "deb_distribution": "trusty",
-                "deb_component": "main",
-                "deb_architecture": "amd64"
-            }
+            "includePattern": "build/(.+\.pdf)", "uploadPattern": "$1",
         }
     ],
     "publish": true
