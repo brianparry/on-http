@@ -49,9 +49,6 @@ describe('Http.Api.Templates', function () {
         findActiveGraphForTarget = this.sandbox.stub(
             workflowApiService, 'findActiveGraphForTarget');
 
-
-        sinon.stub(workflowApiService, 'createActiveGraph').resolves({ instanceId: 'test' });
-
         templates = helper.injector.get('Templates');
         sinon.stub(templates, 'getAll').resolves();
         sinon.stub(templates, 'getName').resolves();

@@ -748,6 +748,7 @@ describe('Http.Api.Nodes v1.1', function () {
 
             waterline.nodes.needByIdentifier.resolves(node);
             waterline.graphobjects.find.resolves(node.workflows);
+            workflowApiService.getWorkflowsByNodeId.resolves(node.workflows);
 
             return helper.request().get('/api/1.1/nodes/123/workflows')
                 .expect('Content-Type', /^application\/json/)

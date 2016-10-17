@@ -26,6 +26,7 @@ describe("Http.Services.Api.Nodes", function () {
             onHttpContext.prerequisiteInjectables,
             helper.require("/lib/services/nodes-api-service"),
             helper.require("/lib/services/workflow-api-service"),
+            helper.require("/lib/services/taskgraph-api-service"),
             dihelper.simpleWrapper({}, 'Task.Services.OBM'),
             dihelper.simpleWrapper({}, 'ipmi-obm-service')
         ]);

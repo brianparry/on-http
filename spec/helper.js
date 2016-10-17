@@ -8,6 +8,14 @@ var util = require('util');
 
 var index = require('../index');
 
+var mockConsul = require('./mock-consul-server.js');
+var mockGrpc = require('./mock-grpc.js');
+var mockery = require('mockery');
+mockery.enable();
+mockery.warnOnUnregistered(false);
+mockery.registerMock('consul', mockConsul);
+mockery.registerMock('grpc', mockGrpc);
+
 global.onHttpContext = index.onHttpContextFactory();
 
 // Legacy
