@@ -2,13 +2,22 @@
 
 'use strict';
 
+var response;
+
 var functions = {
     getTasksById: function(client, callback) {
         if (client.identifier == undefined) {
             return callback('invalid task id', undefined);
         } else {
-            return callback(undefined, {response: '[{"node":"581a41cd30c24078070f9deb","_status":"succeeded"}]'});
+            //return callback(undefined, {response: '[{"node":"581a41cd30c24078070f9deb","_status":"succeeded"}]'});
+            return callback(undefined, {response: response});
         }
+    },
+    workflowsGet: function(client, callback) {
+        if (typeof response === 'object') {
+            throw response;
+        }
+        return callback(undefined, {response: response});
     }
 };
 
@@ -26,6 +35,9 @@ var mockGrpc = {
     },
     load: function() {
         return scheduler;
+    },
+    setResponse: function(res) {
+        response = res;
     }
 };
 

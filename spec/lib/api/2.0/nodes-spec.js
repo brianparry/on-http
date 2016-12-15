@@ -12,9 +12,13 @@ describe('2.0 Http.Api.Nodes', function () {
     var Constants;
     var Errors;
     var nodesApi;
+    var Consul = require('../../../mock-consul-server.js');
+    var mockConsul;
+    var mockGrpc = require('../../../mock-grpc.js');
 
     before('start HTTP server', function () {
         this.timeout(10000);
+        mockConsul = Consul();
         return helper.startServer([
         ]).then(function () {
             configuration = helper.injector.get('Services.Configuration');
@@ -60,7 +64,6 @@ describe('2.0 Http.Api.Nodes', function () {
         resetStubs(waterline.catalogs);
         resetStubs(waterline.workitems);
         resetStubs(waterline.graphobjects);
-        //resetStubs(workflowApiService);
 
         ObmService.prototype.identifyOn.reset();
         ObmService.prototype.identifyOff.reset();
@@ -604,6 +607,16 @@ describe('2.0 Http.Api.Nodes', function () {
                         name: 'TestGraph.Dummy'
                     }]
             };
+            mockConsul.agent.service.register({
+                bbbb: {
+                    Service: 'taskgraph',
+                    ID: 'testID',
+                    Tags: ['scheduler'],
+                    Address: 'grpcAddress',
+                    Port: 31000
+                }
+            });
+            mockGrpc.setResponse(JSON.stringify(node.workflows));
 
             waterline.graphobjects.find.resolves(node.workflows);
 
@@ -620,6 +633,7 @@ describe('2.0 Http.Api.Nodes', function () {
                     status: 'pending'
                 }]
             };
+            mockGrpc.setResponse(JSON.stringify(node.workflows));
 
             waterline.graphobjects.find.resolves(node.workflows);
 
@@ -632,6 +646,7 @@ describe('2.0 Http.Api.Nodes', function () {
         });
 
         it('should return a 404 if the node was not found', function () {
+            mockGrpc.setResponse(new Errors.NotFoundError('Not Found'));
             waterline.graphobjects.find.rejects(new Errors.NotFoundError('Not Found'));
             return helper.request().get('/api/2.0/nodes/123/workflows')
                 .expect('Content-Type', /^application\/json/)
