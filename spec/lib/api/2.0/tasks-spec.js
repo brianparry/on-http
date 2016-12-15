@@ -138,15 +138,7 @@ describe('Http.Api.Tasks', function () {
 
     describe("POST /tasks/:id", function () {
         it("should accept a large entity response", function() {
-            function createBigString() {
-                var x = "";
-                for (var i = 0; i < 200000; i+=1) {
-                    x += "1";
-                }
-                return x;
-            }
-
-            var data = {"identifier": createBigString(),"tasks": [{"cmd": "testfoo"}]};
+            var data = { foo: new Array(200000).join('1') };
 
             sandbox.stub(taskGraphApiService, 'postTaskById').resolves({});
             return helper.request().post('/api/2.0/tasks/123')

@@ -6,6 +6,8 @@
 describe('Http.Api.Tasks', function () {
     var taskProtocol;
     var tasksApiService;
+    var taskGraphApiService;
+    var sandbox;
     var lookupService;
     var templates;
 
@@ -23,13 +25,19 @@ describe('Http.Api.Tasks', function () {
 
         tasksApiService = helper.injector.get('Http.Services.Api.Tasks');
         tasksApiService.getNode = sinon.stub();
+        taskGraphApiService = helper.injector.get("Http.Services.Api.Taskgraph.Scheduler");
 
         lookupService = helper.injector.get('Services.Lookup');
         lookupService.ipAddressToMacAddress = sinon.stub().resolves('00:11:22:33:44:55');
 
         templates = helper.injector.get('Templates');
+        sandbox = sinon.sandbox.create();
 
         return helper.reset();
+    });
+
+    afterEach('restore mocks', function() {
+        sandbox.restore();
     });
 
     after('stop HTTP server', function () {
@@ -39,6 +47,7 @@ describe('Http.Api.Tasks', function () {
     describe('GET /tasks/:id', function () {
         it("should send down tasks", function() {
             taskProtocol.activeTaskExists.resolves(null);
+            sandbox.stub(taskGraphApiService, 'getTasksById').resolves({});
             return helper.request().get('/api/1.1/tasks/testnodeid')
             .expect(200)
             .expect(function (res) {
@@ -58,6 +67,7 @@ describe('Http.Api.Tasks', function () {
 
         it("should error if an active task exists but no commands are sent", function() {
             taskProtocol.requestCommands.rejects(new Error(''));
+            sandbox.stub(taskGraphApiService, 'getTasksById').resolves({});
             return helper.request().get('/api/1.1/tasks/testnodeid')
             .expect(404)
             .expect(function (res) {
@@ -109,20 +119,14 @@ describe('Http.Api.Tasks', function () {
 
     describe("POST /tasks/:id", function () {
         it("should accept a large entity response", function() {
-            function createBigString() {
-                var x = "";
-                for (var i = 0; i < 200000; i+=1) {
-                    x += "1";
-                }
-                return x;
-            }
+            var data = { foo: new Array(200000).join('1') };
 
-            var data = { foo: createBigString() };
-
+            sandbox.stub(taskGraphApiService, 'postTaskById').resolves({});
             return helper.request().post('/api/1.1/tasks/123')
             .send(data)
+            .expect(201)
             .expect(function () {
-                expect(taskProtocol.respondCommands).to.have.been.calledWith('123', data);
+                expect(taskGraphApiService.postTaskById).to.have.been.calledWith('123', data);
             })
             .expect(201);
         });
