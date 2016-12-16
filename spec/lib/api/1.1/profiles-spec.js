@@ -9,6 +9,7 @@ describe('Http.Api.Profiles', function () {
     var profiles;
     var presenter;
     var profileApiService;
+    var taskgraphApiService;
     var Errors;
 
     before('start HTTP server', function () {
@@ -30,7 +31,10 @@ describe('Http.Api.Profiles', function () {
 
         workflowApiService = helper.injector.get('Http.Services.Api.Workflows');
         sinon.stub(workflowApiService, 'findActiveGraphForTarget').resolves({});
-        sinon.stub(workflowApiService, 'createActiveGraph').resolves({ instanceId: 'test' });
+
+        taskgraphApiService = helper.injector.get('Http.Services.Api.Taskgraph.Scheduler');
+        sinon.stub(taskgraphApiService, 'workflowsPost').resolves({ instanceId: 'test' });
+
 
         presenter = helper.injector.get('common-api-presenter');
 
@@ -60,6 +64,7 @@ describe('Http.Api.Profiles', function () {
         resetMocks(presenter.CommonApiPresenter.prototype);
         resetMocks(profiles);
         resetMocks(profileApiService);
+        resetMocks(taskgraphApiService);
     });
 
     after('stop HTTP server', function () {
