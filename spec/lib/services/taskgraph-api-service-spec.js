@@ -9,6 +9,7 @@ describe("Http.Services.Taskgraph", function () {
     var tgApi;
     var Consul = require('../../mock-consul-server.js');
     var mockConsul;
+    var mockGrpc = require('../../mock-grpc.js');
 
     before("Http.Services.Taskgraph before", function() {
         helper.setupInjector([
@@ -69,6 +70,7 @@ describe("Http.Services.Taskgraph", function () {
                     Port: 31000
                 }
             });
+            mockGrpc.setResponse('[{"node":"581a41cd30c24078070f9deb","_status":"succeeded"}]');
             return tgApi.getTasksById(123).should.be.fulfilled;
         });
     });
