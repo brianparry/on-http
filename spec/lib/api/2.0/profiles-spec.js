@@ -30,7 +30,6 @@ describe('Http.Api.Profiles', function () {
 
         workflowApiService = helper.injector.get('Http.Services.Api.Workflows');
         sinon.stub(workflowApiService, 'findActiveGraphForTarget').resolves({});
-        sinon.stub(workflowApiService, 'createActiveGraph').resolves({ instanceId: 'test' });
 
         presenter = helper.injector.get('common-api-presenter');
 
